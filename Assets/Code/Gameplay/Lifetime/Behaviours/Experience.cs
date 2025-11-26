@@ -11,7 +11,7 @@ namespace Code.Gameplay.Lifetime.Behaviours
 
         public void AddExperience(int amount)
         {
-            CurrentExperience += amount;
+            CurrentExperience = Mathf.Clamp(CurrentExperience + amount, 0, Int32.MaxValue);
             OnXPChanged?.Invoke(CurrentExperience);
         }
         
