@@ -43,7 +43,12 @@ namespace Code.Infrastructure.Installers
 		private void BindHeroServices()
 		{
 			Container.BindInterfacesTo<HeroFactory>().AsSingle();
-			Container.BindInterfacesTo<HeroProvider>().AsSingle();
+			Container.BindInterfacesTo<
+				
+				
+				
+				
+				HeroProvider>().AsSingle();
 		}
 	}
 }

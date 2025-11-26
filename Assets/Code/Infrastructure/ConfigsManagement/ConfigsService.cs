@@ -17,6 +17,8 @@ namespace Code.Infrastructure.ConfigsManagement
 		private Dictionary<PickUpId, PickUpConfig> _pickupsById = new();
 
 		public HeroConfig HeroConfig { get; private set; }
+		
+		public ProgressionConfig ProgressionConfig { get; private set; }
 
 		public ConfigsService(IAssetsService assets)
 		{
@@ -28,23 +30,29 @@ namespace Code.Infrastructure.ConfigsManagement
 			LoadHeroConfig();
 			LoadEnemyConfigs();
 			LoadPickUpConfigs();
+			LoadProgressionConfig();
 		}
 
 		private void LoadPickUpConfigs()
 		{
-			var pickUpConfigs = _assets.LoadAssetsFromResources<PickUpConfig>("Configs/PickUps");
+			var pickUpConfigs = _assets.LoadAssetsFromResources<PickUpConfig>(Constants.CONFIG_PICKUPS_PATH);
 			_pickupsById = pickUpConfigs.ToList().ToDictionary(x => x.Id, x => x);
 		}
 
 		private void LoadHeroConfig()
 		{
-			HeroConfig = _assets.LoadAssetFromResources<HeroConfig>("Configs/HeroConfig");
+			HeroConfig = _assets.LoadAssetFromResources<HeroConfig>(Constants.CONFIG_HERO_PATH);
 		}
 
 		private void LoadEnemyConfigs()
 		{
-			var enemyConfigs = _assets.LoadAssetsFromResources<EnemyConfig>("Configs/Enemies");
+			var enemyConfigs = _assets.LoadAssetsFromResources<EnemyConfig>(Constants.CONFIG_ENEMIES_PATH);
 			_enemiesById = enemyConfigs.ToList().ToDictionary(x => x.Id, x => x);
+		}
+
+		private void LoadProgressionConfig()
+		{
+			ProgressionConfig = _assets.LoadAssetFromResources<ProgressionConfig>(Constants.CONFIG_PROGRESSION_PATH);
 		}
 
 		public EnemyConfig GetEnemyConfig(EnemyId id)
