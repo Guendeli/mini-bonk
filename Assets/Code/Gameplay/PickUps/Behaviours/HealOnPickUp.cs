@@ -6,7 +6,7 @@ namespace Code.Gameplay.PickUps.Behaviours
 	[RequireComponent(typeof(PickUp))]
 	public class HealOnPickUp : MonoBehaviour
 	{
-		[SerializeField] private float _healAmount;
+		[SerializeField] private float _healAmount; // TODO - Wouldn't it be better to balance if this value came from a scriptable objects instead of Prefab
 		
 		private PickUp _pickUp;
 
