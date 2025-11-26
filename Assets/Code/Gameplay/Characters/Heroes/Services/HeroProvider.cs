@@ -7,6 +7,7 @@ namespace Code.Gameplay.Characters.Heroes.Services
 	{
 		public Behaviours.Hero Hero { get; private set; }
 		public Health Health { get; private set; }
+		public Experience TotalXP { get; private set; }
 		public Stats Stats { get; private set; }
 		
 		public void SetHero(Behaviours.Hero hero)
@@ -14,6 +15,7 @@ namespace Code.Gameplay.Characters.Heroes.Services
 			Hero = hero;
 			Health = hero.GetComponent<Health>();
 			Stats = hero.GetComponent<Stats>();
+			TotalXP = hero.GetComponent<Experience>();
 		}
 	}
 }
